@@ -1,7 +1,7 @@
 <template>
   <div id="app" class="app-container">
     <nav v-if="showSidebar" class="sidebar">
-      <h2>Linea SUR</h2>
+      <h2><img src="../logo-CONICET_opt.png" alt="logo"></h2>
       <ul>
         <li>
           <router-link to="/login" class="nav-link">
@@ -19,7 +19,7 @@
           </router-link>
         </li>
       </ul>
-      <div class="sidebar-footer">v0.1 • LineaSur </div>
+      <div class="sidebar-footer"> Sede GIOL: Godoy Cruz 2290 (C1425FQB) CABA – República Argentina – info@conicet.gov.ar</div>
     </nav>
     <div class="main-content">
       <router-view />
