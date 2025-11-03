@@ -1,3 +1,4 @@
+
 <template>
   <div id="precipitation">
     <h1>Registrar precipitaciones</h1>
@@ -44,7 +45,7 @@
       </section>
     </div>
 
-    <!-- 📊 Registros recientes -->
+    <!--  Registros recientes -->
     <div class="records-container">
       <h2>Registros recientes</h2>
       <div v-if="loading" class="records-loading">Cargando registros...</div>
@@ -82,7 +83,7 @@ export default defineComponent({
     const records = ref([]);
     const loading = ref(false);
 
-    // 🔹 Función para obtener los registros
+    //  Función para obtener los registros
     const fetchRecords = async () => {
       loading.value = true;
       try {
@@ -104,7 +105,7 @@ export default defineComponent({
       }
     };
 
-    // 🔹 Guardar lluvia
+    //  Guardar lluvia
     const submitRain = async () => {
       try {
         const response = await fetch("http://127.0.0.1:8000/api/lluvia", {
@@ -124,7 +125,7 @@ export default defineComponent({
       }
     };
 
-    // 🔹 Guardar nieve
+    //  Guardar nieve
     const submitSnow = async () => {
       try {
         const response = await fetch("http://127.0.0.1:8000/api/nieve", {
@@ -144,7 +145,7 @@ export default defineComponent({
       }
     };
 
-    // 🔹 Cargar registros al montar el componente
+    //  Cargar registros al montar el componente
     onMounted(() => {
       fetchRecords();
     });

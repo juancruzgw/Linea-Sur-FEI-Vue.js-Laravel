@@ -5,8 +5,8 @@ import Login from "./views/Login.vue";
 
 const routes = [
   { path: "/", name: "home", component: Home },
-  { path: "/precipitation", name: "precipitation", component: () => import("./views/Precipitation.vue") },
-  { path: "/login", name: "login", component: Login, meta: { hideSidebar: true } },
+  { path: "/precipitation", name: "Precipitation", component: () => import("./views/Precipitation.vue") },
+  { path: "/login", name: "Login", component: Login, meta: { hideSidebar: true } },
 ];
 
 const router = createRouter({
