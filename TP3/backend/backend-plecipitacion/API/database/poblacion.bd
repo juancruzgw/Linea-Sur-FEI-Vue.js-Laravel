@@ -1,0 +1,91 @@
+-- 1) ZONAS
+INSERT INTO zonas (locality, created_at, updated_at)
+VALUES 
+ ('Zona Norte', NOW(), NOW()),
+ ('Zona Sur', NOW(), NOW());
+
+-- 2) SITES
+INSERT INTO sites (latitude, longitude, zona_id, created_at, updated_at)
+VALUES 
+ (-34.603722, -58.381592, 1, NOW(), NOW()), -- CABA
+ (-32.9473, -60.6305, 2, NOW(), NOW());    -- Rosario
+
+-- 3) USERS
+INSERT INTO users (name, password, rol, zona_id, sitio_id, created_at, updated_at)
+VALUES 
+ ('Juan Perez', '123456', 'admin', 1, 1, NOW(), NOW()),
+ ('Maria Gomez', 'abcdef', 'user', 2, 2, NOW(), NOW());
+
+-- 4) UNITED MEASURES
+INSERT INTO united_measures (valueMeasure, abbreviation, created_at, updated_at)
+VALUES 
+ (1, 'mm', NOW(), NOW()),
+ (1000, 'L', NOW(), NOW());
+
+-- 5) INSTRUMENTS
+INSERT INTO instruments (name, brand, model, united_measure_id, created_at, updated_at)
+VALUES 
+ ('Pluviómetro', 'BrandX', 'PX-100', 1, NOW(), NOW()),
+ ('Medidor Caudal', 'HydroTech', 'HT-200', 2, NOW(), NOW());
+
+-- 6) SAMPLES
+INSERT INTO samples (cota, created_at, updated_at)
+VALUES 
+ ('Cota A', NOW(), NOW()),
+ ('Cota B', NOW(), NOW());
+
+-- 7) INSTRUMENT_USERS (relación N:M)
+INSERT INTO instrument_users (instrument_id, user_id, created_at, updated_at)
+VALUES 
+ (1, 1, NOW(), NOW()),
+ (2, 2, NOW(), NOW());
+
+-- 8) REPORT_REGULARS
+INSERT INTO report_regulars (date, note, image, audio, precipitation, amount, type, 
+                             sample_id, united_measure_id, user_id, instrument_id,
+                             created_at, updated_at)
+VALUES
+ ('2025-09-01', 'Lluvia ligera', 'img1.png', 'audio1.mp3', '5', '20', 'precipitatión',
+  1, 1, 1, 1, NOW(), NOW()),
+ ('2025-09-02', 'Caudal alto', 'img2.png', 'audio2.mp3', '0', '1000', 'caudal',
+  2, 2, 2, 2, NOW(), NOW());
+
+-- 9) REPORTS
+INSERT INTO reports (date, note, image, audio, precipitation, amount, type,
+                     sample_id, united_measure_id, user_id, instrument_id,
+                     created_at, updated_at)
+VALUES
+ ('2025-09-01', 'Reporte de lluvia', 'r1.png', 'r1.mp3', '10', '50', 'precipitatión',
+  1, 1, 1, 1, NOW(), NOW()),
+ ('2025-09-03', 'Reporte de caudal', 'r2.png', 'r2.mp3', '0', '2000', 'caudal',
+  2, 2, 2, 2, NOW(), NOW());
+
+-- 10) BREAKAGE_INSTRUMENTS
+INSERT INTO breakage_instruments (date, note, image, audio, precipitation, amount, type, damage, description, created_at, updated_at)
+VALUES
+ ('2025-09-05', 'Rotura leve', 'b1.png', 'b1.mp3', '0', '0', 'falla', 'Fisura', 'Rota por golpe', NOW(), NOW()),
+ ('2025-09-06', 'Rotura grave', 'b2.png', 'b2.mp3', '0', '0', 'falla', 'Fractura', 'Inservible', NOW(), NOW());
+
+-- 11) SAMPLE_ISOTOPOS
+INSERT INTO sample_isotopos (cantMilimetros, value1, value2, sample_id, created_at, updated_at)
+VALUES
+ (100, '0.5', '0.8', 1, NOW(), NOW()),
+ (200, '0.7', '1.1', 2, NOW(), NOW());
+
+-- 12) SAMPLE_CAUDALS
+INSERT INTO sample_caudals (flow, sample_id, created_at, updated_at)
+VALUES
+ ('50 L/s', 1, NOW(), NOW()),
+ ('100 L/s', 2, NOW(), NOW());
+
+-- 13) SAMPLE_LEVELS
+INSERT INTO sample_levels (freaticLevel, sample_id, created_at, updated_at)
+VALUES
+ ('5 m', 1, NOW(), NOW()),
+ ('10 m', 2, NOW(), NOW());
+
+-- 14) SAMPLE_CHEMICALS
+INSERT INTO sample_chemicals (ph, conductivity, sodiumConcentration, sample_id, created_at, updated_at)
+VALUES
+ ('7.2', '200 µS/cm', '15 mg/L', 1, NOW(), NOW()),
+ ('6.8', '180 µS/cm', '12 mg/L', 2, NOW(), NOW());
